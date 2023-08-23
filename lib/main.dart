@@ -126,7 +126,9 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           height: 50,
                         ),
-                        Text(score2.get('match_name'),), //from Cloud Firestore
+                        Text(
+                          score2.get('match_name'),
+                        ), //from Cloud Firestore
                         // score.get('Match Name'),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -238,6 +240,25 @@ class HomeScreen extends StatelessWidget {
                 }),
           ],
         ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: Text('First'),
+          ),
+          // Spacer(),
+          FloatingActionButton(
+            onPressed: () {},
+            child: Text('Second'),
+          ),
+          // Spacer(),
+          FloatingActionButton(
+            onPressed: () {},
+            child: Text('Third'),
+          ),
+        ],
       ),
     );
   }
