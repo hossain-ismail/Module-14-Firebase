@@ -1,5 +1,10 @@
-# module_14_class_1_firebase
+# module_14_class_2_firebase
 
-![Screenshot_20230820_185808](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/8ebcc99d-b372-4ef2-9c54-4e9554153808)
+### before delete
+![before delete](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/2cdc6e0c-e685-40fd-9d4c-22f66271922e)
 
-![Screenshot_20230821_232751](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/5f52b0c2-4681-4810-806b-dea2c73e7275)
+
+
+### after delete
+
+![after delete document](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/ba6ddb60-dddb-4e9a-9fe2-02763c2196a6)
