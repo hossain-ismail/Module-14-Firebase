@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                   return Center(
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
                         Text(
