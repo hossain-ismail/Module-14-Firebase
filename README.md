@@ -1,5 +1,6 @@
-# module_14_class_1_firebase
+# module_14_class_2_firebase
 
-![Screenshot_20230820_185808](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/8ebcc99d-b372-4ef2-9c54-4e9554153808)
+By using StreamBuilder () widget, when data change inside firebase no need to hot-reload it will automatically update data in emulator, that mean live stremaing. Similar for data change by FAB button, no need to re-load. StramBuilder widget 1st and 2nd widget but third widget is use FutureBuilder(), no need to do that, just kepp it if want to see difference between StreaBuilder() and FutureBuilder() code
 
-![Screenshot_20230821_232751](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/5f52b0c2-4681-4810-806b-dea2c73e7275)
+![before change](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/9e521301-ed35-4979-91da-09ddc987d057)
+![after change](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/18d5b125-3085-4059-aeae-d13951930ccd)
