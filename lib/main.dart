@@ -34,8 +34,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             //first
-            FutureBuilder<DocumentSnapshot>(
-                future: FirebaseFirestore.instance
+            StreamBuilder(
+                stream: FirebaseFirestore.instance
                     .collection('BasketBall')
                     .doc('1_ban_vs_ind')
                     // .collection('abs') // if document has collection and then doc inside new collection and again doc inside collection and so on
@@ -48,8 +48,8 @@ class HomeScreen extends StatelessWidget {
                     // .doc('dfdf')
                     // .collection('abs')
                     // .doc('dfdf')
-                    .get(),
-                //get() provide one time future value not multiple, its not use for live streaming
+                    .snapshots(),
+                //snapshots() provide live update data that mean live streaming no need to hot-reload
                 builder: (context,
                     AsyncSnapshot<DocumentSnapshot<Object?>> snapshot) {
                   print(snapshot.data?.data());
@@ -116,11 +116,11 @@ class HomeScreen extends StatelessWidget {
                 }),
 
             //2nd
-            FutureBuilder<DocumentSnapshot>(
-                future: FirebaseFirestore.instance
+            StreamBuilder(
+                stream: FirebaseFirestore.instance
                     .collection('BasketBall')
                     .doc('Bangladesh_vs_England')
-                    .get(),
+                    .snapshots(),
                 builder: (context,
                     AsyncSnapshot<DocumentSnapshot<Object?>> snapshot2) {
                   if (snapshot2.hasError) {
