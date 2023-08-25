@@ -33,10 +33,21 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            //first
             FutureBuilder<DocumentSnapshot>(
                 future: FirebaseFirestore.instance
                     .collection('BasketBall')
                     .doc('1_ban_vs_ind')
+                    // .collection('abs') // if document has collection and then doc inside new collection and again doc inside collection and so on
+                    // .doc('dfdf')
+                    // .collection('abs')
+                    // .doc('dfdf')
+                    // .collection('abs')
+                    // .doc('dfdf')
+                    // .collection('abs')
+                    // .doc('dfdf')
+                    // .collection('abs')
+                    // .doc('dfdf')
                     .get(),
                 //get() provide one time future value not multiple, its not use for live streaming
                 builder: (context,
@@ -103,6 +114,8 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 }),
+
+            //2nd
             FutureBuilder<DocumentSnapshot>(
                 future: FirebaseFirestore.instance
                     .collection('BasketBall')
@@ -128,8 +141,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(
                           score2.get('match_name'),
+                          style: Theme.of(context).textTheme.titleLarge,
                         ), //from Cloud Firestore
-                        // score.get('Match Name'),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -168,6 +182,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
+            //3rd
             FutureBuilder<DocumentSnapshot>(
                 future: FirebaseFirestore.instance
                     .collection('BasketBall')
@@ -244,16 +259,25 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          //update apply inside first doc of collection
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              FirebaseFirestore.instance
+                  .collection('BasketBall')
+                  .doc('1_ban_vs_ind')
+                  // .update({'Match Name':'Ban vs Ind','score_team_b':50});//data will update in firebase by fb button click, and display by hot-reload
+                  .update({
+                'score_team_b': 5
+              }); //we can access by directly where data change its map or key value, not need to 'Match Name':'Ban vs Ind',
+            },
             child: Text('First'),
           ),
-          // Spacer(),
+
           FloatingActionButton(
             onPressed: () {},
             child: Text('Second'),
           ),
-          // Spacer(),
+          // delete apply inside first doc of collection,
           FloatingActionButton(
             onPressed: () {},
             child: Text('Third'),
