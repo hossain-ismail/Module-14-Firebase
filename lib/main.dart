@@ -222,11 +222,11 @@ class HomeScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  score3.get('score_team_a').toString(),
+                                  score3.get('score_team_a').toString(), // if data is empty then display empty string
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 Text(
-                                  score3.get('team_a'),
+                                  score3.get('team_a'), // if data is empty then display empty string
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                               ],
@@ -238,11 +238,11 @@ class HomeScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  score3.get('score_team_b').toString(),
+                                  score3.get('score_team_b').toString(), // if data is empty then display empty string
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 Text(
-                                  score3.get('team_b'),
+                                  score3.get('team_b'), // if data is empty then display empty string
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                               ],
@@ -295,7 +295,12 @@ class HomeScreen extends StatelessWidget {
           ),
           // delete apply inside first doc of collection,
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              //delete full document value that mean id
+              // FirebaseFirestore.instance.collection('BasketBall').doc('XHR2EgKblzbiOlFSfiCI').delete();
+              //delete specific item by FieldValue class, it will delete 'score_team_b' key
+              // FirebaseFirestore.instance.collection('BasketBall').doc('2_ban_iran').update({'score_team_b':FieldValue.delete()});
+            },
             child:const Text('Delete'),
           ),
         ],
