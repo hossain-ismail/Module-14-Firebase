@@ -222,11 +222,11 @@ class HomeScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  score3.get('score_team_a').toString(), // if data is empty then display empty string
+                                  score3.get('score_team_a').toString(),
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 Text(
-                                  score3.get('team_a'), // if data is empty then display empty string
+                                  score3.get('team_a'),
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                               ],
@@ -238,11 +238,11 @@ class HomeScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  score3.get('score_team_b').toString(), // if data is empty then display empty string
+                                  score3.get('score_team_b').toString(),
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                                 Text(
-                                  score3.get('team_b'), // if data is empty then display empty string
+                                  score3.get('team_b'),
                                   style: Theme.of(context).textTheme.titleLarge,
                                 ),
                               ],
