@@ -1,16 +1,6 @@
-# module_14_class_1_firebase
+# module_14_class_2_firebase
 
-A new Flutter project.
+### Update data by Floating Action Button click
+inside update({}) method, it takes map or key vlaue pair, we can update one team or both team score
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![update](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/e4798361-856f-4728-b632-e167bb3f69cd)
