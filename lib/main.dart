@@ -270,17 +270,33 @@ class HomeScreen extends StatelessWidget {
                 'score_team_b': 5
               }); //we can access by directly where data change its map or key value, not need to 'Match Name':'Ban vs Ind',
             },
-            child: Text('First'),
+            child: const Text('Update'),
           ),
-
+          /* set apply inside first doc of collection, set will replace existing data, only contain the data what we have enter inside this onPressed(),
+          so if any data which necessary in data base but don't put inside this onPress() then those data will remove from data base and will throw error,
+           because FutureBuilder() using those data, so need to full database put inside this set() method*/
           FloatingActionButton(
-            onPressed: () {},
-            child: Text('Second'),
+            //team_b name change England to pakistan, score of team b is also changed
+            onPressed: () {
+              FirebaseFirestore
+                  .instance
+                  .collection('BasketBall')
+                  .doc('Bangladesh_vs_England')
+                  .set({
+                // we can change any data what ever we want, just maintain the key
+                'match_name':'Bangladesh vs England', // keep it as it is to notice the change
+                'team_A':'Bangladesh',
+                'team_B':'Pakistan', // Changed England to Pakistan
+                'Score_team_A':12,
+                'Score_team_B':7,
+              });
+            },
+            child:const Text('Set'),
           ),
           // delete apply inside first doc of collection,
           FloatingActionButton(
             onPressed: () {},
-            child: Text('Third'),
+            child:const Text('Delete'),
           ),
         ],
       ),
