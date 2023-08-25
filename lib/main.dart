@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                   return Center(
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
                         Text(
@@ -295,7 +295,12 @@ class HomeScreen extends StatelessWidget {
           ),
           // delete apply inside first doc of collection,
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              //delete full document value that mean id
+              // FirebaseFirestore.instance.collection('BasketBall').doc('XHR2EgKblzbiOlFSfiCI').delete();
+              //delete specific item by FieldValue class, it will delete 'score_team_b' key
+              // FirebaseFirestore.instance.collection('BasketBall').doc('2_ban_iran').update({'score_team_b':FieldValue.delete()});
+            },
             child:const Text('Delete'),
           ),
         ],
