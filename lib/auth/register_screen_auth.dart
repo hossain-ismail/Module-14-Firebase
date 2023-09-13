@@ -17,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   //bool inProgress = false;
+  bool _obscureText = true;
 
   register() {
     FirebaseAuth.instance
@@ -106,6 +107,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 20,
                 ),
                 TextFormField(
+                  obscureText: _obscureText,
                   controller: passwordController,
                   validator: (String? value) {
                     if (value?.trim()?.isEmpty ?? true) {
@@ -113,8 +115,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                      hintText: 'Password', border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          _obscureText = !_obscureText;
+                          if (mounted) {
+                            setState(() {});
+                          }
+                        },
+                        child: _obscureText
+                            ? const Icon(Icons.visibility_off)
+                            : const Icon(Icons.visibility),
+                      ),
+                      hintText: 'Password',
+                      border: OutlineInputBorder()),
                 ),
                 const SizedBox(
                   height: 10,

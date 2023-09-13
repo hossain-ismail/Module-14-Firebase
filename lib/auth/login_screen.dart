@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  bool _obscureText = true;
   login() {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(
@@ -77,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Form(
             key: formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
                   controller: emailController,
@@ -93,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 TextFormField(
+                  obscureText: _obscureText,
                   controller: passwordController,
                   validator: (String? value) {
                     if (value?.trim()?.isEmpty ?? true) {
@@ -100,8 +103,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                      hintText: 'Password', border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        _obscureText = !_obscureText;
+                        if (mounted) {
+                          setState(() {});
+                        }
+                      },
+                      child: _obscureText
+                          ? const Icon(Icons.visibility_off)
+                          : const Icon(Icons.visibility),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 10,

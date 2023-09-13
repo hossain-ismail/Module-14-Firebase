@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:module_14_class_1_firebase/auth/register_screen_auth.dart';
+
 class FireStoreData extends StatelessWidget {
   FireStoreData({super.key});
 
@@ -10,6 +12,16 @@ class FireStoreData extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Live Score App"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(context,
+                    MaterialPageRoute(builder: (context) {
+                  return RegisterScreen();
+                }), (route) => false);
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -259,20 +271,20 @@ class FireStoreData extends StatelessWidget {
           FloatingActionButton(
             //team_b name change England to pakistan, score of team b is also changed
             onPressed: () {
-              FirebaseFirestore
-                  .instance
+              FirebaseFirestore.instance
                   .collection('BasketBall')
                   .doc('Bangladesh_vs_England')
                   .set({
                 // we can change any data what ever we want, just maintain the key
-                'match_name':'Bangladesh vs England', // keep it as it is to notice the change
-                'team_A':'Bangladesh',
-                'team_B':'Pakistan', // Changed England to Pakistan
-                'Score_team_A':12,
-                'Score_team_B':7,
+                'match_name':
+                    'Bangladesh vs England', // keep it as it is to notice the change
+                'team_A': 'Bangladesh',
+                'team_B': 'Pakistan', // Changed England to Pakistan
+                'Score_team_A': 12,
+                'Score_team_B': 7,
               });
             },
-            child:const Text('Set'),
+            child: const Text('Set'),
           ),
           // delete apply inside first doc of collection,
           FloatingActionButton(
@@ -282,7 +294,7 @@ class FireStoreData extends StatelessWidget {
               //delete specific item by FieldValue class, it will delete 'score_team_b' key
               // FirebaseFirestore.instance.collection('BasketBall').doc('2_ban_iran').update({'score_team_b':FieldValue.delete()});
             },
-            child:const Text('Delete'),
+            child: const Text('Delete'),
           ),
         ],
       ),
