@@ -1,5 +1,6 @@
 # module_14 Sign in screen (suupport class module 15-class 1)
 
+![splash screen](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/e6278a5c-c8d7-4d4c-a08d-ac0eadea0fa7)
 ![login screen](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/3a539487-3d60-48d8-a599-94881f5d2777)
 ![score screen](https://github.com/hossain-eee/Module-14-Firebase/assets/101991583/32017ad9-7e89-452c-9c38-30d47c844dc1)
 
