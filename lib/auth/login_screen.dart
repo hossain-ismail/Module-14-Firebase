@@ -1,81 +1,75 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/snackbar/snackbar.dart';
+import 'package:module_14_class_1_firebase/firestore_data.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  //bool inProgress = false;
-
-  register() {
+  login() {
     FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
+        .signInWithEmailAndPassword(
             email: emailController.text.trim(),
             password: passwordController.text)
         .then((value) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Registration Successfull"),
+        const SnackBar(
+          content: Text("Login Successfull"),
         ),
       );
       //clear the cotroller
       emailController.clear();
       passwordController.clear();
+      //go to login screen
+      Navigator.pushAndRemoveUntil(context,
+          MaterialPageRoute(builder: (context) {
+        return FireStoreData();
+      }), (route) => false);
     }).onError((error, stackTrace) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text("Registration Failed! Tray again"),
+        const SnackBar(
+          content: Text("Sign in Failed! Tray again"),
         ),
       );
     });
-
     //using getx
-/*     FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
-            email: emailController.text, password: passwordController.text)
-        .then((value) {
-      Get.showSnackbar(
-        const GetSnackBar(
-          title: 'User registered successfully',
-          message: ' ',
-          backgroundColor: Colors.green,
-          duration: Duration(seconds: 2),
-        ),
-      );
-      //clear the cotroller
-      emailController.clear();
-      passwordController.clear();
-      // Get.to(LoginScreen)
+    /*    FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text
+    ).then((value) {
+      Get.showSnackbar(const GetSnackBar(
+        title: 'Login success',
+        message: ' ',
+        backgroundColor: Colors.green,
+        duration: Duration(seconds: 2),
+      ));
+      //Get.to(LoginScreen2());
     }).onError((error, stackTrace) {
-      Get.showSnackbar(
-        const GetSnackBar(
-          title: 'Registration Failed',
-          message: ' ',
-          backgroundColor: Colors.redAccent,
-          duration: Duration(seconds: 2),
-        ),
-      );
+      Get.showSnackbar(const GetSnackBar(
+        title: 'Login Failed',
+        message: ' ',
+        backgroundColor: Colors.redAccent,
+        duration: Duration(seconds: 2),
+      ));
     }); */
   }
-
-  // connectivity
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registration Screen'),
-        centerTitle: true,
+        title: const Text('Login Screen'),
       ),
       body: Center(
         child: Padding(
@@ -83,7 +77,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Form(
             key: formKey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
                   controller: emailController,
@@ -116,10 +109,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        register();
+                        login();
                       }
                     },
-                    child: const Text('Register'))
+                    child: const Text('Sign In'))
               ],
             ),
           ),
